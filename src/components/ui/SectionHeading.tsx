@@ -7,11 +7,11 @@ interface SectionHeadingProps {
 
 export default function SectionHeading({ label, title }: SectionHeadingProps) {
   return (
-    <ScrollReveal className="mb-12 md:mb-16">
-      <p className="text-accent-400 font-medium text-sm tracking-widest uppercase mb-2">
+    <ScrollReveal className="mb-12 md:mb-16 lg:mb-20">
+      <p className="text-accent-500 dark:text-accent-400 font-medium text-xs sm:text-sm tracking-widest uppercase mb-3 md:mb-4">
         {label}
       </p>
-      <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold dark:text-white text-gray-900">
+      <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold dark:text-white text-gray-900">
         {title}
       </h2>
     </ScrollReveal>

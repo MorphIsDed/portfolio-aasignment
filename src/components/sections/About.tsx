@@ -19,20 +19,20 @@ const pillVariants = {
 
 export default function About() {
   return (
-    <section id="about" className="py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="about" className="py-20 md:py-28 lg:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading label="About" title="Get to know me" />
 
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
           {/* Summary */}
           <ScrollReveal>
             <div className="space-y-5">
-              <p className="dark:text-gray-300 text-gray-700 leading-relaxed">
-                I'm a frontend developer who loves creating intuitive, accessible,
+              <p className="dark:text-gray-300 text-gray-800 leading-relaxed">
+                I'm a full-stack developer who loves creating intuitive, accessible,
                 and performant web experiences. I focus on writing clean code and
                 building component-driven interfaces that are a joy to use.
               </p>
-              <p className="dark:text-gray-400 text-gray-600 leading-relaxed">
+              <p className="dark:text-gray-400 text-gray-700 leading-relaxed">
                 When I'm not coding, you'll find me exploring new frameworks,
                 contributing to open-source, or reading about design systems and
                 user experience patterns.

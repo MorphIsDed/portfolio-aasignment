@@ -31,10 +31,10 @@ export default function TimelineItem({ entry, index }: TimelineItemProps) {
             {entry.duration}
           </span>
         </div>
-        <p className="text-sm font-medium dark:text-gray-300 text-gray-700 mb-2">
+        <p className="text-sm font-medium dark:text-gray-300 text-gray-800 mb-2">
           {entry.organization}
         </p>
-        <p className="text-sm dark:text-gray-400 text-gray-600 leading-relaxed">
+        <p className="text-sm dark:text-gray-400 text-gray-700 leading-relaxed">
           {entry.description}
         </p>
       </div>

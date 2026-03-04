@@ -8,11 +8,11 @@ export default function Experience() {
   const education = timeline.filter((e) => e.type === "education");
 
   return (
-    <section id="experience" className="py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="experience" className="py-20 md:py-28 lg:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading label="Experience" title="Where I've worked" />
 
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
           {/* Experience column */}
           <div>
             <ScrollReveal>

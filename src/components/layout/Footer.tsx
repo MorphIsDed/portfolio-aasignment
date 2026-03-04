@@ -4,9 +4,9 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t dark:border-dark-700 border-gray-200 py-8">
-      <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm dark:text-gray-500 text-gray-400">
+    <footer className="border-t dark:border-dark-700 border-gray-200 py-6 md:py-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="text-xs sm:text-sm dark:text-gray-500 text-gray-500">
           &copy; {year} {personalInfo.name}. All rights reserved.
         </p>
         <div className="flex items-center gap-5">

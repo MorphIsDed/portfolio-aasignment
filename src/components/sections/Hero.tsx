@@ -24,19 +24,19 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         {/* Greeting chip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="inline-flex items-center gap-2 rounded-full border dark:border-dark-600 border-gray-200 dark:bg-dark-800/60 bg-gray-50/60 px-4 py-1.5 mb-8 backdrop-blur-sm"
+          className="inline-flex items-center gap-2 rounded-full border dark:border-dark-600 border-gray-300 dark:bg-dark-800/60 bg-gray-100/60 px-4 py-1.5 mb-8 backdrop-blur-sm"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
           </span>
-          <span className="text-sm dark:text-gray-400 text-gray-500">
+          <span className="text-sm dark:text-gray-300 text-gray-700">
             Available for opportunities
           </span>
         </motion.div>
@@ -66,7 +66,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="max-w-2xl mx-auto text-base sm:text-lg dark:text-gray-400 text-gray-600 leading-relaxed mb-10"
+          className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl dark:text-gray-300 text-gray-700 leading-relaxed mb-10"
         >
           {personalInfo.intro}
         </motion.p>
@@ -80,7 +80,7 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-500 to-accent-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-500/25 transition-all hover:shadow-xl hover:shadow-accent-500/30 hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-500 to-accent-600 px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-white shadow-lg shadow-accent-500/25 transition-all hover:shadow-xl hover:shadow-accent-500/30 hover:-translate-y-0.5"
           >
             View Projects
             <svg
@@ -95,7 +95,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border dark:border-dark-500 border-gray-300 px-7 py-3 text-sm font-semibold dark:text-gray-300 text-gray-700 transition-all hover:border-accent-500 hover:text-accent-400 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-full border dark:border-dark-500 border-gray-400 px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold dark:text-gray-200 text-gray-800 transition-all hover:border-accent-500 hover:text-accent-600 dark:hover:text-accent-400 hover:-translate-y-0.5"
           >
             Contact Me
           </a>
