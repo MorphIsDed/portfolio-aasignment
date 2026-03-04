@@ -4,14 +4,14 @@
 // ──────────────────────────────────────────────
 
 export const personalInfo = {
-  name: "Aditya Sahu", // TODO: Replace with your name
-  role: "Frontend Developer",
+  name: "Abhinay Kumar Sahu",
+  role: "Full-Stack Developer",
   intro:
-    "I craft modern, responsive web experiences with clean code and thoughtful design. Passionate about turning ideas into polished digital products.",
-  email: "your.email@example.com", // TODO: Replace
-  linkedin: "https://linkedin.com/in/yourprofile", // TODO: Replace
-  github: "https://github.com/yourusername", // TODO: Replace
-  resumeUrl: "#", // TODO: Replace with actual resume link
+    "BCA undergraduate building offline-first mobile apps and modern web experiences. Skilled in Android development with Kotlin, React-based web design, and core computer science principles. Passionate about delivering clean code and user-focused solutions.",
+  email: "sahuabhinay317@gmail.com",
+  linkedin: "https://www.linkedin.com/in/abhinay-sahu-677846319",
+  github: "https://github.com/MorphIsDed",
+  resumeUrl: "#",
 } as const;
 
 export interface Skill {
@@ -21,25 +21,28 @@ export interface Skill {
 
 export const skills: Skill[] = [
   // Frontend
-  { name: "React", category: "Frontend" },
+  { name: "React.js", category: "Frontend" },
   { name: "TypeScript", category: "Frontend" },
   { name: "Tailwind CSS", category: "Frontend" },
-  { name: "Next.js", category: "Frontend" },
-  { name: "HTML5 / CSS3", category: "Frontend" },
+  { name: "HTML5 & CSS3", category: "Frontend" },
   { name: "JavaScript (ES6+)", category: "Frontend" },
   { name: "Framer Motion", category: "Frontend" },
   { name: "Responsive Design", category: "Frontend" },
-  // Tools
+  { name: "Canvas API", category: "Frontend" },
+  // Mobile & Backend
+  { name: "Kotlin", category: "Frontend" },
+  { name: "Android Studio", category: "Frontend" },
+  { name: "Firebase", category: "Frontend" },
+  { name: "Room Database", category: "Frontend" },
+  // Tools & Languages
   { name: "Git & GitHub", category: "Tools" },
   { name: "VS Code", category: "Tools" },
   { name: "Figma", category: "Tools" },
+  { name: "Android Studio", category: "Tools" },
   { name: "Vite", category: "Tools" },
-  { name: "npm", category: "Tools" },
-  // Languages
-  { name: "TypeScript", category: "Languages" },
-  { name: "JavaScript", category: "Languages" },
-  { name: "Python", category: "Languages" },
   { name: "C++", category: "Languages" },
+  { name: "Java", category: "Languages" },
+  { name: "SQL", category: "Languages" },
 ];
 
 export interface Project {
@@ -53,28 +56,27 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "E-Commerce Dashboard", // TODO: Replace with your project
+    title: "Lavasa Travel Guide",
     description:
-      "A full-featured admin dashboard with real-time analytics, inventory management, and order tracking. Built with a component-driven architecture.",
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Chart.js"],
-    githubUrl: "https://github.com/yourusername/project-1", // TODO: Replace
-    liveUrl: "https://project-1.vercel.app", // TODO: Replace
+      "Single-page tourism web application showcasing attractions, accommodations, and activities across Lavasa. Features dynamic tour planning with reusable React components and smooth transitions. Fully responsive across all devices with zero page reloads for seamless user experience.",
+    techStack: ["React.js", "JavaScript", "CSS3", "HTML5"],
+    githubUrl: "https://github.com/MorphIsDed/lavasa-travel-guide",
+    liveUrl: "https://lavasa-travel-guide.vercel.app",
   },
   {
-    title: "Weather App", // TODO: Replace with your project
+    title: "Interactive Ping Pong Game",
     description:
-      "A clean weather application that displays current conditions and 7-day forecasts using geolocation and the OpenWeather API with smooth animations.",
-    techStack: ["React", "TypeScript", "REST API", "CSS Modules"],
-    githubUrl: "https://github.com/yourusername/project-2", // TODO: Replace
-    liveUrl: "https://project-2.vercel.app", // TODO: Replace
+      "Browser-based 2-player game with Canvas API rendering at stable 60fps. Features velocity-based ball physics, per-frame collision detection, and OOP design for paddle and ball entities. Complete game-state management with score tracking and keyboard-driven controls.",
+    techStack: ["HTML5 Canvas", "JavaScript", "CSS3"],
+    githubUrl: "https://github.com/MorphIsDed/ping-pong-game",
+    liveUrl: "https://morphisded.github.io/ping-pong-game",
   },
   {
-    title: "Task Management Tool", // TODO: Replace with your project
+    title: "Flash Deck - Offline Study Assistant",
     description:
-      "A drag-and-drop Kanban board for managing tasks with persistent local storage, filtering, and keyboard shortcuts for power users.",
-    techStack: ["React", "TypeScript", "Tailwind CSS", "DnD Kit"],
-    githubUrl: "https://github.com/yourusername/project-3", // TODO: Replace
-    liveUrl: "https://project-3.vercel.app", // TODO: Replace
+      "Native Android flashcard app with integrated AI chatbot supporting unlimited decks and spaced-repetition scheduling. 100% offline functionality via Room Database and SQLite. MVVM architecture with Kotlin coroutines maintains 60fps performance. Material Design 3 UI with custom card-flip animations.",
+    techStack: ["Kotlin", "Android Studio", "Room Database", "Material Design 3"],
+    githubUrl: "https://github.com/MorphIsDed/flash-deck",
   },
 ];
 
@@ -87,31 +89,31 @@ export interface TimelineEntry {
 }
 
 export const timeline: TimelineEntry[] = [
-  // Experience
-  {
-    type: "experience",
-    role: "Frontend Developer Intern", // TODO: Replace
-    organization: "Company Name", // TODO: Replace
-    duration: "Jun 2025 – Present", // TODO: Replace
-    description:
-      "Built and maintained responsive web applications using React, TypeScript, and Tailwind CSS. Collaborated with design and backend teams.", // TODO: Replace
-  },
-  {
-    type: "experience",
-    role: "Freelance Web Developer", // TODO: Replace
-    organization: "Self-employed", // TODO: Replace
-    duration: "Jan 2024 – May 2025", // TODO: Replace
-    description:
-      "Delivered modern landing pages and web apps for small businesses. Focused on performance and accessibility.", // TODO: Replace
-  },
   // Education
   {
     type: "education",
-    role: "B.Tech in Computer Science", // TODO: Replace
-    organization: "Your University", // TODO: Replace
-    duration: "2022 – 2026", // TODO: Replace
+    role: "Bachelor of Computer Applications (BCA)",
+    organization: "Christ University, Pune Lavasa Campus",
+    duration: "2024 – 2028",
     description:
-      "Relevant coursework: Data Structures, Algorithms, Web Development, Database Systems.", // TODO: Replace
+      "Coursework: Data Structures, Algorithms, OOP, DBMS, Operating Systems, Computer Networks. Qualified for Round 2 in Hackverse 2024.",
+  },
+  // Experience & Achievements
+  {
+    type: "experience",
+    role: "Student Coordinator, Gaming Club",
+    organization: "Christ University",
+    duration: "2024 – Present",
+    description:
+      "Organized 10+ weekly game-dev and design sessions. Managed club events and member engagement activities across campus.",
+  },
+  {
+    type: "experience",
+    role: "Full-Stack Developer",
+    organization: "Personal Projects",
+    duration: "2024 – Present",
+    description:
+      "Built and deployed production-grade applications including offline-first mobile apps, responsive web applications, and interactive games with focus on clean architecture and user experience.",
   },
 ];
 
