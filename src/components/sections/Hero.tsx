@@ -36,7 +36,7 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
           </span>
-          <span className="text-sm dark:text-gray-300 text-gray-700">
+          <span className="text-sm dark:text-gray-300 text-gray-900 font-medium">
             Available for opportunities
           </span>
         </motion.div>
@@ -66,7 +66,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl dark:text-gray-300 text-gray-700 leading-relaxed mb-10"
+          className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl dark:text-gray-300 text-gray-900 leading-relaxed mb-10"
         >
           {personalInfo.intro}
         </motion.p>

@@ -68,7 +68,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         {/* Description */}
-        <p className="dark:text-gray-400 text-gray-700 text-sm md:text-base leading-relaxed mb-6">
+        <p className="dark:text-gray-400 text-gray-900 text-sm md:text-base leading-relaxed mb-6">
           {project.description}
         </p>
 

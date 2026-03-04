@@ -27,22 +27,21 @@ export default function About() {
           {/* Summary */}
           <ScrollReveal>
             <div className="space-y-5">
-              <p className="dark:text-gray-300 text-gray-800 leading-relaxed">
+              <p className="dark:text-gray-300 text-gray-900 leading-relaxed">
                 I'm a full-stack developer who loves creating intuitive, accessible,
                 and performant web experiences. I focus on writing clean code and
                 building component-driven interfaces that are a joy to use.
               </p>
-              <p className="dark:text-gray-400 text-gray-700 leading-relaxed">
+              <p className="dark:text-gray-400 text-gray-800 leading-relaxed">
                 When I'm not coding, you'll find me exploring new frameworks,
                 contributing to open-source, or reading about design systems and
                 user experience patterns.
               </p>
-              {/* TODO: Uncomment and add your profile image */}
-              {/* <img
+              <img
                 src="/profile.jpg"
                 alt="Profile"
                 className="mt-6 w-48 h-48 rounded-2xl object-cover border-2 border-accent-500/20"
-              /> */}
+              />
             </div>
           </ScrollReveal>
 
