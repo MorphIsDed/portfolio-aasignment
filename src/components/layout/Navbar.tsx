@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { navLinks, personalInfo } from "../../data/portfolio";
+import { navLinks } from "../../data/portfolio";
 
 interface NavbarProps {
   isDark: boolean;

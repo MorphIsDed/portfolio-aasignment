@@ -33,8 +33,8 @@ export default function About() {
                 building component-driven interfaces that are a joy to use.
               </p>
               <p className="dark:text-gray-400 text-gray-800 leading-relaxed">
-                When I'm not coding, you'll find me exploring new frameworks,
-                contributing to open-source, or reading about design systems and
+                When I'm not coding, you'll find me exploring new top,
+                playing badminton, or reading about design systems and
                 user experience patterns.
               </p>
               <img
