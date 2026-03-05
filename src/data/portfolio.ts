@@ -5,7 +5,7 @@
 
 export const personalInfo = {
   name: "Abhinay Kumar Sahu",
-  role: "Full-Stack Developer",
+  role: "Full-Stack & Android Developer",
   intro:
     "BCA undergraduate building offline-first mobile apps and modern web experiences. Skilled in Android development with Kotlin, React-based web design, and core computer science principles. Passionate about delivering clean code and user-focused solutions.",
   email: "sahuabhinay317@gmail.com",
@@ -16,7 +16,7 @@ export const personalInfo = {
 
 export interface Skill {
   name: string;
-  category: "Frontend" | "Tools" | "Languages" | "Other";
+  category: "Frontend" | "Tools" | "Languages";
 }
 
 export const skills: Skill[] = [
