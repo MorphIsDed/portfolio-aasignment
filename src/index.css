@@ -44,18 +44,40 @@ html {
 }
 
 body {
-  @apply font-sans antialiased;
+  @apply font-sans antialiased transition-colors duration-300;
   margin: 0;
   min-height: 100vh;
 }
 
 /* ── Dark / Light Mode ── */
 body {
-  @apply bg-white text-gray-900;
+  @apply bg-stone-50 text-gray-900;
 }
 
 .dark body {
   @apply bg-dark-900 text-gray-100;
+}
+
+main {
+  @apply transition-colors duration-300;
+}
+
+@layer components {
+  .theme-section {
+    @apply bg-transparent transition-colors duration-300;
+  }
+
+  .theme-section-alt {
+    @apply bg-white dark:bg-dark-800/35 transition-colors duration-300;
+  }
+
+  .theme-surface {
+    @apply bg-white dark:bg-dark-800 border border-gray-200/80 dark:border-dark-600 transition-colors duration-300;
+  }
+
+  .theme-surface-muted {
+    @apply bg-stone-100 text-gray-700 border border-stone-200 dark:bg-dark-700 dark:text-gray-300 dark:border-dark-600 transition-colors duration-300;
+  }
 }
 
 /* ── Scrollbar ── */

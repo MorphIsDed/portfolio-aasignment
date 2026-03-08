@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="theme-section relative flex min-h-screen items-center justify-center overflow-hidden"
     >
       {/* Animated gradient orbs */}
       <div className="pointer-events-none absolute inset-0">
@@ -16,12 +16,7 @@ export default function Hero() {
 
       {/* Grid pattern overlay */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.08)_1px,transparent_1px)] bg-[size:60px_60px] opacity-[0.2] dark:bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] dark:opacity-[0.03]"
       />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
@@ -30,13 +25,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="inline-flex items-center gap-2 rounded-full border dark:border-dark-600 border-gray-300 dark:bg-dark-800/60 bg-gray-100/60 px-4 py-1.5 mb-8 backdrop-blur-sm"
+          className="mb-8 inline-flex items-center gap-2 rounded-full border border-gray-300/80 bg-white/75 px-4 py-1.5 backdrop-blur-sm dark:border-dark-600 dark:bg-dark-800/60"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
           </span>
-          <span className="text-sm dark:text-gray-300 text-gray-900 font-medium">
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
             Available for opportunities
           </span>
         </motion.div>
@@ -66,7 +61,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl dark:text-gray-300 text-gray-900 leading-relaxed mb-10"
+          className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-gray-700 dark:text-gray-300 sm:text-lg md:text-xl"
         >
           {personalInfo.intro}
         </motion.p>
@@ -95,7 +90,7 @@ export default function Hero() {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border dark:border-dark-500 border-gray-400 px-5 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold dark:text-gray-200 text-gray-800 transition-all hover:border-accent-500 hover:text-accent-600 dark:hover:text-accent-400 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white/80 px-5 py-2.5 text-xs font-semibold text-gray-800 transition-all hover:-translate-y-0.5 hover:border-accent-500 hover:text-accent-600 dark:border-dark-500 dark:bg-dark-800/60 dark:text-gray-200 dark:hover:text-accent-400 sm:px-7 sm:py-3 sm:text-sm"
           >
             Contact Me
           </a>
@@ -112,9 +107,9 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          className="w-6 h-10 rounded-full border-2 dark:border-dark-500 border-gray-300 flex justify-center pt-2"
+          className="flex h-10 w-6 justify-center rounded-full border-2 border-gray-300 dark:border-dark-500 pt-2"
         >
-          <div className="w-1 h-2 rounded-full dark:bg-gray-500 bg-gray-400" />
+          <div className="h-2 w-1 rounded-full bg-gray-500 dark:bg-gray-500" />
         </motion.div>
       </motion.div>
     </section>

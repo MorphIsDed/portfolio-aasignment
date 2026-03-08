@@ -13,9 +13,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
-      className="group relative rounded-2xl overflow-hidden
-        dark:bg-dark-800 bg-gray-50
-        border dark:border-dark-600 border-gray-200
+      className="theme-surface group relative overflow-hidden rounded-2xl
         transition-all duration-300
         hover:shadow-2xl hover:shadow-accent-500/10
         hover:-translate-y-1"
@@ -26,7 +24,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <div className="p-6 sm:p-8">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
-          <h3 className="font-display text-xl sm:text-2xl font-bold dark:text-white text-gray-900 group-hover:text-accent-400 transition-colors">
+          <h3 className="font-display text-xl sm:text-2xl font-bold text-gray-900 transition-colors group-hover:text-accent-600 dark:text-white dark:group-hover:text-accent-400">
             {project.title}
           </h3>
           <div className="flex gap-3 mt-1">
@@ -34,7 +32,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="dark:text-gray-400 text-gray-500 hover:text-accent-400 transition-colors"
+              className="text-gray-500 transition-colors hover:text-accent-600 dark:text-gray-400 dark:hover:text-accent-400"
               aria-label={`GitHub repo for ${project.title}`}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -46,7 +44,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="dark:text-gray-400 text-gray-500 hover:text-accent-400 transition-colors"
+                className="text-gray-500 transition-colors hover:text-accent-600 dark:text-gray-400 dark:hover:text-accent-400"
                 aria-label={`Live demo for ${project.title}`}
               >
                 <svg
@@ -68,7 +66,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
 
         {/* Description */}
-        <p className="dark:text-gray-400 text-gray-900 text-sm md:text-base leading-relaxed mb-6">
+        <p className="mb-6 text-sm leading-relaxed text-gray-600 dark:text-gray-400 md:text-base">
           {project.description}
         </p>
 
@@ -77,9 +75,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           {project.techStack.map((tech) => (
             <span
               key={tech}
-              className="text-xs font-medium px-3 py-1 rounded-full
-                dark:bg-dark-600 dark:text-gray-300
-                bg-gray-200 text-gray-700
+              className="theme-surface-muted rounded-full px-3 py-1 text-xs font-medium
                 transition-colors group-hover:dark:bg-accent-500/10 group-hover:dark:text-accent-400
                 group-hover:bg-accent-500/10 group-hover:text-accent-600"
             >

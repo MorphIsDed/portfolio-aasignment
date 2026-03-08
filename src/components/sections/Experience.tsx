@@ -8,7 +8,7 @@ export default function Experience() {
   const education = timeline.filter((e) => e.type === "education");
 
   return (
-    <section id="experience" className="py-20 md:py-28 lg:py-32">
+    <section id="experience" className="theme-section-alt py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading label="Experience" title="Where I've worked" />
 

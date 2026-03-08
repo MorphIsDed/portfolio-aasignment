@@ -30,7 +30,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "dark:bg-dark-900/80 bg-white/80 backdrop-blur-lg shadow-lg shadow-black/5"
+          ? "bg-stone-50/85 shadow-lg shadow-black/5 backdrop-blur-lg dark:bg-dark-900/80"
           : "bg-transparent"
       }`}
     >
@@ -38,7 +38,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
         {/* Logo / Name */}
         <a
           href="#"
-          className="font-display text-base sm:text-lg font-bold dark:text-white text-gray-900 hover:text-accent-500 dark:hover:text-accent-400 transition-colors"
+          className="font-display text-base font-bold text-gray-900 transition-colors hover:text-accent-600 dark:text-white dark:hover:text-accent-400 sm:text-lg"
         >
           Portfolio
           <span className="text-accent-500">.</span>
@@ -50,7 +50,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium dark:text-gray-300 text-gray-900 hover:text-accent-500 dark:hover:text-accent-400 transition-colors"
+                className="text-sm font-medium text-gray-700 transition-colors hover:text-accent-600 dark:text-gray-300 dark:hover:text-accent-400"
               >
                 {link.label}
               </a>
@@ -64,7 +64,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
           <button
             onClick={onToggleTheme}
             aria-label="Toggle dark mode"
-            className="rounded-full p-2 dark:text-gray-300 text-gray-900 hover:text-accent-500 dark:hover:text-accent-400 transition-colors"
+            className="rounded-full border border-transparent p-2 text-gray-700 transition-colors hover:border-gray-300 hover:text-accent-500 dark:text-gray-300 dark:hover:border-dark-500 dark:hover:text-accent-400"
           >
             {isDark ? (
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -81,7 +81,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
-            className="md:hidden p-2 dark:text-gray-300 text-gray-900"
+            className="p-2 text-gray-700 dark:text-gray-300 md:hidden"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               {mobileOpen ? (
@@ -101,7 +101,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden dark:bg-dark-900/95 bg-white/95 backdrop-blur-lg"
+            className="bg-stone-50/95 backdrop-blur-lg dark:bg-dark-900/95 md:hidden overflow-hidden"
           >
             <ul className="flex flex-col items-center gap-6 py-8">
               {navLinks.map((link) => (
@@ -109,7 +109,7 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
                   <a
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-lg font-medium dark:text-gray-200 text-gray-900 hover:text-accent-500 dark:hover:text-accent-400 transition-colors"
+                    className="text-lg font-medium text-gray-800 transition-colors hover:text-accent-600 dark:text-gray-200 dark:hover:text-accent-400"
                   >
                     {link.label}
                   </a>

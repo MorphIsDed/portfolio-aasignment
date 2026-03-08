@@ -19,7 +19,7 @@ const pillVariants = {
 
 export default function About() {
   return (
-    <section id="about" className="py-20 md:py-28 lg:py-32">
+    <section id="about" className="theme-section-alt py-20 md:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading label="About" title="Get to know me" />
 
@@ -27,12 +27,12 @@ export default function About() {
           {/* Summary */}
           <ScrollReveal>
             <div className="space-y-5">
-              <p className="dark:text-gray-300 text-gray-900 leading-relaxed">
+              <p className="leading-relaxed text-gray-700 dark:text-gray-300">
                 I'm a full-stack developer who loves creating intuitive, accessible,
                 and performant web experiences. I focus on writing clean code and
                 building component-driven interfaces that are a joy to use.
               </p>
-              <p className="dark:text-gray-400 text-gray-800 leading-relaxed">
+              <p className="leading-relaxed text-gray-600 dark:text-gray-400">
                 When I'm not coding, you'll find me exploring new top,
                 playing badminton, or reading about design systems and
                 user experience patterns.
@@ -66,10 +66,8 @@ export default function About() {
                         <motion.span
                           key={skill.name}
                           variants={pillVariants}
-                          className="text-sm px-4 py-1.5 rounded-full font-medium
-                            dark:bg-dark-700 dark:text-gray-300 dark:border-dark-600
-                            bg-gray-100 text-gray-700 border-gray-200
-                            border transition-colors
+                          className="theme-surface-muted text-sm px-4 py-1.5 rounded-full font-medium
+                            transition-colors
                             hover:border-accent-500/40 hover:dark:bg-accent-500/10 hover:dark:text-accent-400
                             hover:bg-accent-500/10 hover:text-accent-600"
                         >

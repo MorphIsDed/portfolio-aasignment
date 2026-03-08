@@ -16,13 +16,13 @@ export default function TimelineItem({ entry, index }: TimelineItemProps) {
       className="relative pl-8 pb-10 last:pb-0 group"
     >
       {/* Vertical line */}
-      <div className="absolute left-[7px] top-3 bottom-0 w-px dark:bg-dark-600 bg-gray-200 group-last:hidden" />
+      <div className="absolute bottom-0 left-[7px] top-3 w-px bg-gray-300 dark:bg-dark-600 group-last:hidden" />
 
       {/* Dot */}
-      <div className="absolute left-0 top-2 w-[15px] h-[15px] rounded-full border-2 dark:border-accent-500 border-accent-500 dark:bg-dark-900 bg-white transition-colors group-hover:bg-accent-500" />
+      <div className="absolute left-0 top-2 h-[15px] w-[15px] rounded-full border-2 border-accent-500 bg-stone-50 transition-colors group-hover:bg-accent-500 dark:bg-dark-900" />
 
       {/* Content */}
-      <div className="dark:bg-dark-800 bg-gray-50 rounded-xl p-5 sm:p-6 border dark:border-dark-600 border-gray-200 transition-all hover:border-accent-500/30">
+      <div className="theme-surface rounded-xl p-5 transition-all hover:border-accent-500/30 sm:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
           <h3 className="font-display font-bold text-lg dark:text-white text-gray-900">
             {entry.role}
@@ -31,10 +31,10 @@ export default function TimelineItem({ entry, index }: TimelineItemProps) {
             {entry.duration}
           </span>
         </div>
-        <p className="text-sm font-medium dark:text-gray-300 text-gray-800 mb-2">
+        <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
           {entry.organization}
         </p>
-        <p className="text-sm dark:text-gray-400 text-gray-700 leading-relaxed">
+        <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
           {entry.description}
         </p>
       </div>
