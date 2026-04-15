@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import SectionHeading from "../ui/SectionHeading";
 import ScrollReveal from "../ui/ScrollReveal";
-import { skills } from "../../data/portfolio";
+import { skills, personalInfo } from "../../data/portfolio";
 
 const categories = ["Frontend", "Tools", "Languages"] as const;
 
@@ -23,34 +23,43 @@ export default function About() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading label="About" title="Get to know me" />
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
-          {/* Summary */}
+        <div className="section-frame grid items-start gap-8 md:grid-cols-[0.95fr_1.05fr] md:gap-12 lg:gap-16">
           <ScrollReveal>
             <div className="space-y-5">
+              <p className="text-sm font-medium uppercase tracking-[0.26em] text-gray-500 dark:text-gray-400">
+                Builder mindset
+              </p>
               <p className="leading-relaxed text-gray-700 dark:text-gray-300">
-                I'm a full-stack developer who loves creating intuitive, accessible,
-                and performant web experiences. I focus on writing clean code and
-                building component-driven interfaces that are a joy to use.
+                {personalInfo.intro}
               </p>
               <p className="leading-relaxed text-gray-600 dark:text-gray-400">
-                When I'm not coding, you'll find me exploring new top,
-                playing badminton, or reading about design systems and
-                user experience patterns.
+                Outside of coding, I spend time exploring new tools, playing
+                badminton, and studying the kinds of motion systems and interaction
+                patterns that make digital experiences feel memorable.
               </p>
+              <div className="grid gap-3 pt-3 sm:grid-cols-2">
+                <div className="theme-surface-muted rounded-2xl p-4">
+                  <p className="text-xs uppercase tracking-[0.24em] text-gray-500 dark:text-gray-400">Focus</p>
+                  <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">Motion-rich frontends with practical engineering underneath.</p>
+                </div>
+                <div className="theme-surface-muted rounded-2xl p-4">
+                  <p className="text-xs uppercase tracking-[0.24em] text-gray-500 dark:text-gray-400">Edge</p>
+                  <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">Comfortable moving between UI craft, interaction, and app architecture.</p>
+                </div>
+              </div>
               <img
                 src="/profile.jpg"
                 alt="Profile"
-                className="mt-6 w-48 h-48 rounded-2xl object-cover border-2 border-accent-500/20"
+                className="mt-6 h-56 w-full max-w-sm rounded-[1.75rem] border border-white/60 object-cover shadow-[0_20px_50px_rgba(15,23,42,0.14)] dark:border-white/10"
               />
             </div>
           </ScrollReveal>
 
-          {/* Skills */}
           <ScrollReveal delay={0.15}>
             <div className="space-y-8">
               {categories.map((category) => (
                 <div key={category}>
-                  <h3 className="text-sm font-semibold tracking-widest uppercase dark:text-accent-400 text-accent-600 mb-3">
+                  <h3 className="mb-3 text-sm font-semibold tracking-widest uppercase text-accent-600 dark:text-accent-400">
                     {category}
                   </h3>
                   <motion.div
@@ -66,7 +75,7 @@ export default function About() {
                         <motion.span
                           key={skill.name}
                           variants={pillVariants}
-                          className="theme-surface-muted text-sm px-4 py-1.5 rounded-full font-medium
+                          className="theme-surface-muted rounded-full px-4 py-2 text-sm font-medium
                             transition-colors
                             hover:border-accent-500/40 hover:dark:bg-accent-500/10 hover:dark:text-accent-400
                             hover:bg-accent-500/10 hover:text-accent-600"

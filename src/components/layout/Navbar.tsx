@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { navLinks } from "../../data/portfolio";
 
-interface NavbarProps {
-  isDark: boolean;
-  onToggleTheme: () => void;
-}
+const primaryLinks = [
+  { href: "#hero", label: "Home" },
+  { href: "#projects", label: "Projects" },
+  { href: "#contact", label: "Contact" },
+];
 
-export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -28,60 +28,41 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-stone-50/85 shadow-lg shadow-black/5 backdrop-blur-lg dark:bg-dark-900/80"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 px-3 pt-3 transition-all duration-300 sm:px-4 sm:pt-4"
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3 md:py-4">
-        {/* Logo / Name */}
+      <nav
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border px-4 py-3 sm:px-6 md:py-4 ${
+          scrolled
+            ? "border-white/12 bg-dark-900/75 shadow-[0_24px_70px_rgba(2,6,23,0.5)] backdrop-blur-2xl"
+            : "border-white/8 bg-white/4 backdrop-blur-md"
+        }`}
+      >
         <a
           href="#"
-          className="font-display text-base font-bold text-gray-900 transition-colors hover:text-accent-600 dark:text-white dark:hover:text-accent-400 sm:text-lg"
+          className="font-display text-base font-bold text-white transition-colors hover:text-accent-400 sm:text-lg"
         >
-          Portfolio
-          <span className="text-accent-500">.</span>
+          Abhinay Sahu
         </a>
 
-        {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {primaryLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <motion.a
                 href={link.href}
-                className="text-sm font-medium text-gray-700 transition-colors hover:text-accent-600 dark:text-gray-300 dark:hover:text-accent-400"
+                whileHover={{ y: -2 }}
+                className="text-sm font-medium text-gray-100/85 transition-colors hover:text-accent-400"
               >
                 {link.label}
-              </a>
+              </motion.a>
             </li>
           ))}
         </ul>
 
-        {/* Right side: theme toggle + mobile hamburger */}
         <div className="flex items-center gap-4">
-          {/* Theme toggle */}
-          <button
-            onClick={onToggleTheme}
-            aria-label="Toggle dark mode"
-            className="rounded-full border border-transparent p-2 text-gray-700 transition-colors hover:border-gray-300 hover:text-accent-500 dark:text-gray-300 dark:hover:border-dark-500 dark:hover:text-accent-400"
-          >
-            {isDark ? (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-              </svg>
-            ) : (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-              </svg>
-            )}
-          </button>
-
-          {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
-            className="p-2 text-gray-700 dark:text-gray-300 md:hidden"
+            className="rounded-full border border-white/10 bg-white/6 p-2 text-gray-100 md:hidden"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               {mobileOpen ? (
@@ -94,22 +75,21 @@ export default function Navbar({ isDark, onToggleTheme }: NavbarProps) {
         </div>
       </nav>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="bg-stone-50/95 backdrop-blur-lg dark:bg-dark-900/95 md:hidden overflow-hidden"
+            className="mt-2 overflow-hidden rounded-[2rem] border border-white/10 bg-dark-900/92 backdrop-blur-2xl md:hidden"
           >
             <ul className="flex flex-col items-center gap-6 py-8">
-              {navLinks.map((link) => (
+              {primaryLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-lg font-medium text-gray-800 transition-colors hover:text-accent-600 dark:text-gray-200 dark:hover:text-accent-400"
+                    className="text-lg font-medium text-gray-100 transition-colors hover:text-accent-400"
                   >
                     {link.label}
                   </a>

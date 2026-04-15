@@ -1,14 +1,68 @@
 import { useState, type FormEvent } from "react";
+import { motion } from "framer-motion";
 import SectionHeading from "../ui/SectionHeading";
 import ScrollReveal from "../ui/ScrollReveal";
 import { personalInfo } from "../../data/portfolio";
 
+const initialFormState = {
+  name: "",
+  email: "",
+  message: "",
+  website: "",
+};
+
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState(initialFormState);
+  const [status, setStatus] = useState<"idle" | "pending" | "success" | "error">("idle");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (formData.website.trim()) {
+      setStatus("success");
+      setSubmitted(true);
+      setFormData(initialFormState);
+      return;
+    }
+
+    if (!FORMSPREE_ENDPOINT) {
+      const subject = encodeURIComponent(`Portfolio inquiry from ${formData.name}`);
+      const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
+      window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
+      setStatus("success");
+      setSubmitted(true);
+      setFormData(initialFormState);
+      return;
+    }
+
+    setStatus("pending");
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `Portfolio inquiry from ${formData.name}`,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setSubmitted(true);
+        setFormData(initialFormState);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -16,8 +70,7 @@ export default function Contact() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading label="Contact" title="Let's connect" />
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
-          {/* Info side */}
+        <div className="section-frame grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
           <ScrollReveal>
             <div className="space-y-6">
               <p className="leading-relaxed text-gray-700 dark:text-gray-300">
@@ -27,9 +80,9 @@ export default function Contact() {
               </p>
 
               <div className="space-y-4">
-                {/* Email */}
-                <a
+                <motion.a
                   href={`mailto:${personalInfo.email}`}
+                  whileHover={{ x: 6 }}
                   className="flex items-center gap-3 group"
                 >
                   <div className="theme-surface-muted flex h-10 w-10 items-center justify-center rounded-xl group-hover:bg-accent-500/10">
@@ -40,13 +93,13 @@ export default function Contact() {
                   <span className="text-sm text-gray-700 transition-colors group-hover:text-accent-600 dark:text-gray-300 dark:group-hover:text-accent-400">
                     {personalInfo.email}
                   </span>
-                </a>
+                </motion.a>
 
-                {/* LinkedIn */}
-                <a
+                <motion.a
                   href={personalInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
+                  whileHover={{ x: 6 }}
                   className="flex items-center gap-3 group"
                 >
                   <div className="theme-surface-muted flex h-10 w-10 items-center justify-center rounded-xl group-hover:bg-accent-500/10">
@@ -57,13 +110,13 @@ export default function Contact() {
                   <span className="text-sm text-gray-700 transition-colors group-hover:text-accent-600 dark:text-gray-300 dark:group-hover:text-accent-400">
                     LinkedIn
                   </span>
-                </a>
+                </motion.a>
 
-                {/* GitHub */}
-                <a
+                <motion.a
                   href={personalInfo.github}
                   target="_blank"
                   rel="noopener noreferrer"
+                  whileHover={{ x: 6 }}
                   className="flex items-center gap-3 group"
                 >
                   <div className="theme-surface-muted flex h-10 w-10 items-center justify-center rounded-xl group-hover:bg-accent-500/10">
@@ -74,12 +127,11 @@ export default function Contact() {
                   <span className="text-sm text-gray-700 transition-colors group-hover:text-accent-600 dark:text-gray-300 dark:group-hover:text-accent-400">
                     GitHub
                   </span>
-                </a>
+                </motion.a>
               </div>
             </div>
           </ScrollReveal>
 
-          {/* Form side */}
           <ScrollReveal delay={0.15}>
             {submitted ? (
               <div className="flex items-center justify-center h-full">
@@ -98,49 +150,88 @@ export default function Contact() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5 rounded-[1.75rem] border border-white/50 bg-white/45 p-5 backdrop-blur-xl dark:border-white/10 dark:bg-white/4 sm:p-6">
+                {!FORMSPREE_ENDPOINT && (
+                  <p className="text-sm text-gray-400">
+                    Formspree is not configured, so this form will open your email client as a fallback.
+                  </p>
+                )}
+                <input
+                  type="text"
+                  name="website"
+                  autoComplete="off"
+                  tabIndex={-1}
+                  value={formData.website}
+                  onChange={(event) =>
+                    setFormData((current) => ({ ...current, website: event.target.value }))
+                  }
+                  className="hidden"
+                  aria-hidden="true"
+                />
                 <div>
-                  <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-gray-300">
                     Name
                   </label>
                   <input
                     type="text"
                     id="name"
                     required
-                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-accent-500 focus:ring-1 focus:ring-accent-500 dark:text-gray-200 dark:placeholder:text-gray-500"
+                    minLength={2}
+                    maxLength={80}
+                    value={formData.name}
+                    onChange={(event) =>
+                      setFormData((current) => ({ ...current, name: event.target.value }))
+                    }
+                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-200 outline-none placeholder:text-gray-500 focus:border-accent-500 focus:ring-1 focus:ring-accent-500"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-300">
                     Email
                   </label>
                   <input
                     type="email"
                     id="email"
                     required
-                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-accent-500 focus:ring-1 focus:ring-accent-500 dark:text-gray-200 dark:placeholder:text-gray-500"
+                    value={formData.email}
+                    onChange={(event) =>
+                      setFormData((current) => ({ ...current, email: event.target.value }))
+                    }
+                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-200 outline-none placeholder:text-gray-500 focus:border-accent-500 focus:ring-1 focus:ring-accent-500"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-gray-300">
                     Message
                   </label>
                   <textarea
                     id="message"
                     required
                     rows={5}
-                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-900 outline-none placeholder:text-gray-400 focus:border-accent-500 focus:ring-1 focus:ring-accent-500 dark:text-gray-200 dark:placeholder:text-gray-500"
+                    minLength={20}
+                    maxLength={1500}
+                    value={formData.message}
+                    onChange={(event) =>
+                      setFormData((current) => ({ ...current, message: event.target.value }))
+                    }
+                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-200 outline-none placeholder:text-gray-500 focus:border-accent-500 focus:ring-1 focus:ring-accent-500"
                     placeholder="What's on your mind?"
                   />
                 </div>
-                <button
+                <motion.button
                   type="submit"
-                  className="w-full rounded-xl bg-gradient-to-r from-accent-500 to-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-500/25 transition-all hover:shadow-xl hover:shadow-accent-500/30 hover:-translate-y-0.5"
+                  disabled={status === "pending"}
+                  whileHover={{ y: -3, scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="w-full rounded-xl bg-gradient-to-r from-accent-500 to-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_20px_50px_rgba(220,110,49,0.25)] transition-all hover:-translate-y-0.5 hover:shadow-[0_28px_70px_rgba(220,110,49,0.3)] disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Send Message
-                </button>
+                  {status === "pending" ? "Sending..." : "Send Message"}
+                </motion.button>
+                {status === "error" && (
+                  <p className="text-sm text-red-400">Sorry, the message could not be sent. Please try again later.</p>
+                )}
               </form>
             )}
           </ScrollReveal>

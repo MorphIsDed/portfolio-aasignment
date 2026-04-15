@@ -4,12 +4,21 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="theme-section-alt border-t border-gray-200/80 py-6 dark:border-dark-700 md:py-8">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-xs text-gray-600 dark:text-gray-500 sm:text-sm">
-          &copy; {year} {personalInfo.name}. All rights reserved.
-        </p>
-        <div className="flex items-center gap-5">
+    <footer className="theme-section-alt py-8 md:py-10">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="premium-shell flex flex-col items-start justify-between gap-5 px-6 py-6 sm:flex-row sm:items-center sm:px-8">
+          <div>
+            <p className="font-display text-xl font-semibold text-gray-900 dark:text-white">
+              {personalInfo.name}
+            </p>
+            <p className="mt-1 text-xs uppercase tracking-[0.24em] text-gray-500 dark:text-gray-400">
+              Interactive developer portfolio
+            </p>
+          </div>
+          <p className="text-xs text-gray-600 dark:text-gray-500 sm:text-sm">
+            &copy; {year} {personalInfo.name}. Crafted with React, motion, and a lot of iteration.
+          </p>
+          <div className="flex items-center gap-5">
           <a
             href={personalInfo.github}
             target="_blank"
@@ -42,6 +51,7 @@ export default function Footer() {
             </svg>
           </a>
         </div>
+      </div>
       </div>
     </footer>
   );

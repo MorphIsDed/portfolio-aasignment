@@ -15,14 +15,11 @@ export default function TimelineItem({ entry, index }: TimelineItemProps) {
       transition={{ duration: 0.5, delay: index * 0.12 }}
       className="relative pl-8 pb-10 last:pb-0 group"
     >
-      {/* Vertical line */}
-      <div className="absolute bottom-0 left-[7px] top-3 w-px bg-gray-300 dark:bg-dark-600 group-last:hidden" />
+      <div className="absolute bottom-0 left-[7px] top-3 w-px bg-gradient-to-b from-accent-500/60 to-transparent group-last:hidden" />
 
-      {/* Dot */}
-      <div className="absolute left-0 top-2 h-[15px] w-[15px] rounded-full border-2 border-accent-500 bg-stone-50 transition-colors group-hover:bg-accent-500 dark:bg-dark-900" />
+      <div className="absolute left-0 top-2 h-[15px] w-[15px] rounded-full border-2 border-accent-500 bg-stone-50 shadow-[0_0_0_6px_rgba(240,138,75,0.12)] transition-colors group-hover:bg-accent-500 dark:bg-dark-900" />
 
-      {/* Content */}
-      <div className="theme-surface rounded-xl p-5 transition-all hover:border-accent-500/30 sm:p-6">
+      <div className="theme-surface rounded-[1.5rem] p-5 transition-all hover:border-accent-500/30 hover:shadow-[0_26px_70px_rgba(15,23,42,0.12)] sm:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
           <h3 className="font-display font-bold text-lg dark:text-white text-gray-900">
             {entry.role}
