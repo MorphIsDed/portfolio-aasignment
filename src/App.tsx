@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import CustomCursor from "./components/layout/CustomCursor";
 import Footer from "./components/layout/Footer";
+import BackToTop from "./components/layout/BackToTop";
 import Hero from "./components/sections/Hero";
 import Projects from "./components/sections/Projects";
 import Experience from "./components/sections/Experience";
@@ -44,6 +45,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }

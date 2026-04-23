@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { personalInfo, projects, skills, timeline } from "../../data/portfolio";
 import RenderErrorBoundary from "../ui/RenderErrorBoundary";
+import HeroMetric from "../ui/HeroMetric";
 
 const HeroScene = lazy(() => import("../../three/components/HeroScene"));
 
@@ -74,8 +75,8 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(111,231,221,0.12),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(240,138,75,0.12),transparent_28%)]" />
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:pb-24">
-        <div className="section-frame">
+      <div className="relative z-10 mx-auto w-full max-w-7xl flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:items-start">
+        <div className="section-frame lg:h-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -164,13 +165,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="grid gap-3 sm:grid-cols-3"
           >
-            {heroMetrics.map((metric) => (
-              <div key={metric.label} className="theme-surface-muted rounded-2xl px-4 py-4">
-                <p className="font-display text-2xl font-bold text-white">{metric.value}</p>
-                <p className="mt-1 text-xs uppercase tracking-[0.24em] text-gray-300">
-                  {metric.label}
-                </p>
-              </div>
+            {heroMetrics.map((metric, idx) => (
+              <HeroMetric key={metric.label} value={metric.value} label={metric.label} delay={0.8 + idx * 0.1} />
             ))}
           </motion.div>
         </div>
@@ -179,7 +175,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.94, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="premium-shell relative min-h-[28rem] overflow-hidden rounded-[2.2rem] p-4 sm:min-h-[34rem] sm:p-6"
+          className="premium-shell relative w-full min-h-[32rem] sm:min-h-[40rem] overflow-hidden rounded-[2.2rem] p-4 sm:p-6 order-first lg:order-last"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.12),transparent_45%)] dark:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.1),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.05),transparent_40%)]" />
           <div className="absolute inset-0">
@@ -197,18 +193,7 @@ export default function Hero() {
               <div className="h-full w-full bg-gradient-to-br from-transparent via-accent-500/5 to-cyan-400/10" />
             )}
           </div>
-          <div className="pointer-events-none absolute left-5 top-5 rounded-2xl border border-white/10 bg-dark-900/65 px-4 py-3 backdrop-blur-xl">
-            <p className="text-[10px] uppercase tracking-[0.28em] text-gray-400">Current mode</p>
-            <p className="mt-1 font-display text-lg font-semibold text-white">Liquid Glass Lab</p>
-          </div>
-          <div className="pointer-events-none absolute bottom-5 right-5 max-w-[14rem] rounded-2xl border border-white/10 bg-dark-900/65 px-4 py-3 backdrop-blur-xl">
-            <p className="text-[10px] uppercase tracking-[0.28em] text-gray-400">Design signal</p>
-            <p className="mt-1 text-sm leading-relaxed text-gray-300">
-              Real-time shader motion, editorial spacing, and tactile glass surfaces.
-            </p>
-          </div>
-
-          <div className="pointer-events-none absolute inset-x-0 bottom-16 flex flex-wrap justify-center gap-3 px-4 text-sm">
+          <div className="pointer-events-none absolute inset-x-0 bottom-6 flex flex-wrap justify-center gap-2 px-4 text-sm">
             {projects.map((project, index) => (
               <span
                 key={project.title}

@@ -10,9 +10,25 @@ const primaryLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+
+      // Determine active section based on scroll position
+      const sections = ["hero", "projects", "contact"];
+      let current = "hero";
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element && element.getBoundingClientRect().top <= 100) {
+          current = section;
+        }
+      }
+      setActiveSection(current);
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -22,6 +38,14 @@ export default function Navbar() {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
+
+  const getLinkClass = (href: string) => {
+    const sectionId = href.replace("#", "");
+    const isActive = activeSection === sectionId;
+    return isActive
+      ? "text-accent-400 font-semibold"
+      : "text-gray-100/85 hover:text-accent-400";
+  };
 
   return (
     <motion.header
@@ -50,9 +74,16 @@ export default function Navbar() {
               <motion.a
                 href={link.href}
                 whileHover={{ y: -2 }}
-                className="text-sm font-medium text-gray-100/85 transition-colors hover:text-accent-400"
+                className={`text-sm font-medium transition-colors ${getLinkClass(link.href)}`}
               >
                 {link.label}
+                {activeSection === link.href.replace("#", "") && (
+                  <motion.div
+                    layoutId="activeIndicator"
+                    className="mt-1 h-0.5 w-full rounded-full bg-gradient-to-r from-accent-500 to-accent-400"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
               </motion.a>
             </li>
           ))}
@@ -89,7 +120,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-lg font-medium text-gray-100 transition-colors hover:text-accent-400"
+                    className={`text-lg font-medium transition-colors ${getLinkClass(link.href)}`}
                   >
                     {link.label}
                   </a>
