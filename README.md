@@ -1,73 +1,91 @@
-# React + TypeScript + Vite
+# Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website built with React 19, TypeScript 5.9, Vite 7, Tailwind CSS v4, and Framer Motion. Features a dark-first theme with light mode toggle, smooth animations, and a single-page layout showcasing personal information, projects, experience, and contact details.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend Framework:** React 19 with TypeScript
+- **Build Tool:** Vite 7 with SWC for Fast Refresh
+- **Styling:** Tailwind CSS v4 with custom theme (colors, fonts, animations)
+- **Animations:** Framer Motion for scroll-triggered animations
+- **Icons:** Custom icons and assets
+- **Deployment:** Ready for static hosting (e.g., Vercel, Netlify)
 
-## React Compiler
+## Prerequisites
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- Node.js (version 18 or higher recommended)
+- npm or yarn package manager
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd portfolio-assignment
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Usage
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Development Server
+Start the Vite development server with Hot Module Replacement (HMR):
+```bash
+npm run dev
+```
+The server will run at `http://localhost:5173` by default.
+
+### Build for Production
+Build the project for production:
+```bash
+npm run build
+```
+The output will be in the `dist/` directory.
+
+### Preview Production Build
+Preview the production build locally:
+```bash
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Linting
+Run ESLint to check for code quality issues:
+```bash
+npm run lint
 ```
+
+## Customization
+
+This portfolio is designed to be easily customizable. All content is centralized in `src/data/portfolio.ts`. Edit this file to update:
+
+- Personal information (name, bio, contact details)
+- Projects (descriptions, links, technologies)
+- Skills and experience
+- Timeline events
+
+The website uses a dark-first theme with Tailwind CSS. Dark/light mode is toggled via a class on the `<html>` element and persisted in localStorage.
+
+## Project Structure
+
+- `src/data/portfolio.ts` — All portfolio content
+- `src/hooks/useDarkMode.ts` — Dark mode state management
+- `src/components/sections/` — Page sections (Hero, About, Projects, Experience, Contact)
+- `src/components/layout/` — Layout components (Navbar, Footer, CustomCursor)
+- `src/components/ui/` — Reusable UI components (ScrollReveal, ProjectCard, etc.)
+- `src/index.css` — Tailwind directives and custom styles
+- `src/three/` — Three.js components for 3D elements (Hero scene)
+
+## Architecture
+
+The app is a single-page application rendered in order by `App.tsx`. Sections are wrapped in `ScrollReveal` for Framer Motion animations. No external UI libraries are used; all components are hand-built with Tailwind CSS.
+
+## Contributing
+
+Feel free to fork and customize this portfolio for your own use. If you find bugs or have suggestions, open an issue or submit a pull request.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
