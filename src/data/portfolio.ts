@@ -7,11 +7,11 @@ export const personalInfo = {
   name: "Abhinay Kumar Sahu",
   role: "Full-Stack & Android Developer",
   intro:
-    "BCA undergraduate building offline-first mobile apps and modern web experiences. Skilled in Android development with Kotlin, React-based web design, and core computer science principles. Passionate about delivering clean code and user-focused solutions.",
+    "BCA undergraduate focused on building responsive web experiences and offline-first mobile products. I work across React, TypeScript, Kotlin, and product-minded UI systems, with an emphasis on clean architecture, smooth interactions, and user-focused execution.",
   email: "sahuabhinay317@gmail.com",
   linkedin: "https://www.linkedin.com/in/abhinay-sahu-677846319",
   github: "https://github.com/MorphIsDed",
-  resumeUrl: "#",
+  resumeUrl: "/Resume.pdf",
 } as const;
 
 export interface Skill {
@@ -63,12 +63,12 @@ export const projects: Project[] = [
   {
     title: "Lavasa Travel Guide",
     description:
-      "A premium tourism showcase for Lavasa designed as an immersive one-page experience with a refined mobile-first booking workflow.",
+      "A premium one-page tourism experience for Lavasa with editorial storytelling, polished section transitions, and a streamlined mobile-first booking journey.",
     techStack: ["React.js", "TypeScript", "Tailwind CSS", "Vite"],
     githubUrl: "https://github.com/MorphIsDed/lavasa-travel-guide",
     liveUrl: "https://lavasa-travel-guide.vercel.app",
     challenge:
-      "Make an inviting travel guide feel editorial and easy to explore while keeping the booking flow seamless on mobile.",
+      "Make a destination site feel immersive and premium while keeping navigation and booking interactions frictionless on smaller screens.",
     constraints: [
       "Fast first load on budget devices",
       "No router churn for a one-page experience",
@@ -80,18 +80,18 @@ export const projects: Project[] = [
       "Headless form patterns for booking preview interactions",
     ],
     outcome:
-      "A polished tourism destination page with rich storytelling, strong mobile performance, and a 4x faster perceived load time.",
-    highlights: ["Responsive travel planner", "Smooth section transitions", "Short-form architecture"],
+      "A polished tourism landing experience with stronger storytelling, clear booking flow, and fast mobile performance.",
+    highlights: ["Editorial landing experience", "Responsive travel planner", "Smooth section transitions"],
   },
   {
     title: "Interactive Ping Pong Game",
     description:
-      "A competitive browser-based game built with precise Canvas physics and crisp controls for two-player local matches.",
+      "A browser-based ping pong game built with Canvas physics, responsive controls, and a lightweight rendering loop for competitive local play.",
     techStack: ["HTML5 Canvas", "JavaScript", "CSS3"],
     githubUrl: "https://github.com/MorphIsDed/ping-pong-game",
     liveUrl: "https://morphisded.github.io/ping-pong-game",
     challenge:
-      "Deliver a classic arcade game experience with responsive collision physics and polished visual feedback.",
+      "Recreate the feel of a classic arcade game with stable ball physics, responsive input handling, and satisfying visual feedback.",
     constraints: [
       "60 FPS target across desktop and mobile",
       "Low bundle size under 200 KB",
@@ -103,17 +103,17 @@ export const projects: Project[] = [
       "Add adaptive difficulty and sound feedback",
     ],
     outcome:
-      "A smooth, retro-inspired experience that feels tactile and responsive on every device.",
-    highlights: ["Adaptive ball physics", "Minimal asset overhead", "Competitive two-player gameplay"],
+      "A retro-inspired game that feels tactile, responsive, and performant without relying on heavy assets or frameworks.",
+    highlights: ["Stable canvas game loop", "Adaptive ball physics", "Competitive two-player gameplay"],
   },
   {
     title: "Flash Deck - Offline Study Assistant",
     description:
-      "An Android study companion built for offline-first flashcards, spaced repetition, and fast-review workflows.",
+      "An offline-first Android study companion for flashcards, spaced repetition, and distraction-free review workflows.",
     techStack: ["Kotlin", "Android Studio", "Room Database", "Material Design 3"],
     githubUrl: "https://github.com/MorphIsDed/flash-deck",
     challenge:
-      "Create an offline study tool with a polished mobile UI, custom animations, and local sync support.",
+      "Create a dependable study tool with polished mobile UX, local persistence, and a review flow that stays fast even offline.",
     constraints: [
       "Reliable offline-first storage",
       "Smooth animations without frame drops",
@@ -125,8 +125,8 @@ export const projects: Project[] = [
       "Build intuitive swipe gestures for deck review",
     ],
     outcome:
-      "A clean Android app that keeps study sessions moving with fast load times and dependable offline performance.",
-    highlights: ["Offline sync architecture", "Material 3 UI", "Smart review scheduling"],
+      "A clean Android app that keeps study sessions fast, dependable, and usable without constant connectivity.",
+    highlights: ["Offline-first architecture", "Material 3 UI", "Smart review scheduling"],
   },
 ];
 
@@ -143,11 +143,11 @@ export const labNotes: LabNote[] = [
     title: "Adaptive interaction experiments",
     category: "Experiment",
     summary:
-      "Rapid prototypes for gesture-driven navigation, responsive hover states and scroll-aware motion." ,
+      "Rapid prototypes exploring gesture-led navigation, responsive hover states, and scroll-aware motion systems.",
     details: [
       "Tried scroll-linked state transitions for a richer hero scene.",
       "Built adaptive hover layers that hint at deeper interactivity.",
-      "Measured ease-of-use with a simplified onboarding flow." ,
+      "Measured clarity with a lighter, more guided onboarding flow.",
     ],
     badge: "UX Lab",
   },
@@ -155,11 +155,11 @@ export const labNotes: LabNote[] = [
     title: "Offline-first architecture sketch",
     category: "Architecture",
     summary:
-      "A lightweight sync model with local persistence, background queueing, and clear failure recovery." ,
+      "A lightweight sync model built around local persistence, background queueing, and predictable failure recovery.",
     details: [
       "Store data locally with Room or IndexedDB.",
       "Sync changes via small delta payloads.",
-      "Keep network retries invisible to the user." ,
+      "Keep retry and recovery states unobtrusive for the user.",
     ],
     badge: "System Design",
   },
@@ -167,11 +167,11 @@ export const labNotes: LabNote[] = [
     title: "Process clip: visual storytelling",
     category: "Studio",
     summary:
-      "Mini-case notes showing how wireframes, motion, and content hierarchy drive a stronger portfolio narrative.",
+      "Mini case notes on how wireframes, motion, and content hierarchy shape a stronger portfolio narrative.",
     details: [
       "Selected content to support persona-led discovery.",
       "Layered sketches with fluid scroll behavior.",
-      "Designed a sequence that leads to the contact call to action." ,
+      "Designed a sequence that leads naturally into the contact CTA.",
     ],
     badge: "Design Notes",
   },
@@ -193,7 +193,7 @@ export const timeline: TimelineEntry[] = [
     organization: "Christ University, Pune Lavasa Campus",
     duration: "2024 – 2028",
     description:
-      "Coursework: Data Structures, Algorithms, OOP, DBMS, Operating Systems, Computer Networks. Qualified for Round 2 in Hackverse 2024.",
+      "Coursework includes Data Structures, Algorithms, OOP, DBMS, Operating Systems, and Computer Networks. Qualified for Round 2 in Hackverse 2024.",
   },
   // Experience & Achievements
   {
@@ -202,7 +202,7 @@ export const timeline: TimelineEntry[] = [
     organization: "Christ University",
     duration: "2024 – Present",
     description:
-      "Organized 10+ weekly game-dev and design sessions. Managed club events and member engagement activities across campus.",
+      "Organized 10+ weekly game development and design sessions while coordinating events and member engagement across campus.",
   },
   {
     type: "experience",
@@ -210,7 +210,7 @@ export const timeline: TimelineEntry[] = [
     organization: "Personal Projects",
     duration: "2024 – Present",
     description:
-      "Built and deployed production-grade applications including offline-first mobile apps, responsive web applications, and interactive games with focus on clean architecture and user experience.",
+      "Built responsive web apps, offline-first mobile products, and interactive browser experiences with a focus on clean architecture and user experience.",
   },
 ];
 

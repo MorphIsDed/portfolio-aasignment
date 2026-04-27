@@ -1,6 +1,6 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
-import * as THREE from "three";
+import { BufferAttribute, BufferGeometry, Group } from "three";
 import HeroSphere from "./HeroSphere";
 
 interface HeroSceneProps {
@@ -16,11 +16,11 @@ const seededUnit = (seed: number) => {
 interface SceneContentProps {
   activeProjectIndex: number;
   scrollProgress: number;
-  particleGeometry: THREE.BufferGeometry;
+  particleGeometry: BufferGeometry;
 }
 
 function SceneContent({ activeProjectIndex, scrollProgress, particleGeometry }: SceneContentProps) {
-  const groupRef = useRef<THREE.Group>(null);
+  const groupRef = useRef<Group>(null);
   const colors = ["#3ddfff", "#ff9f40", "#bf5cff", "#39ff9e"];
   const safeIndex = ((activeProjectIndex % colors.length) + colors.length) % colors.length;
   const activeColor = colors[safeIndex];
@@ -78,8 +78,8 @@ export default function HeroScene({ activeProjectIndex, scrollProgress }: HeroSc
   }, []);
 
   const particleGeometry = useMemo(() => {
-    const geom = new THREE.BufferGeometry();
-    geom.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+    const geom = new BufferGeometry();
+    geom.setAttribute("position", new BufferAttribute(particlePositions, 3));
     return geom;
   }, [particlePositions]);
 

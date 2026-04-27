@@ -1,7 +1,13 @@
 // Shader Loader Utility
 // Dynamically loads .glsl files and compiles them
 
-import * as THREE from 'three';
+import {
+  DoubleSide,
+  ShaderMaterial,
+  Vector3,
+  type IUniform,
+  type ShaderMaterialParameters,
+} from 'three';
 
 
 /**
@@ -10,8 +16,8 @@ import * as THREE from 'three';
 export async function loadShader(
   vertexPath: string,
   fragmentPath: string,
-  uniforms: Record<string, THREE.IUniform>
-): Promise<THREE.ShaderMaterial> {
+  uniforms: Record<string, IUniform>
+): Promise<ShaderMaterial> {
   let vertexShader: string;
   let fragmentShader: string;
 
@@ -35,14 +41,16 @@ export async function loadShader(
     fragmentShader = defaultFragmentShader;
   }
 
-  return new THREE.ShaderMaterial({
+  const materialConfig: ShaderMaterialParameters = {
     uniforms,
     vertexShader,
     fragmentShader,
     transparent: true,
     wireframe: false,
-    side: THREE.DoubleSide,
-  });
+    side: DoubleSide,
+  };
+
+  return new ShaderMaterial(materialConfig);
 }
 
 /**
@@ -54,11 +62,11 @@ export function createShaderUniforms(config?: {
   aberrationAmount?: number;
   freshnelPower?: number;
   shaderQuality?: number;
-}): Record<string, THREE.IUniform> {
+}): Record<string, IUniform> {
   return {
     uTime: { value: 0.0 },
-    uMouse: { value: new THREE.Vector3(0, 0, 0) },
-    uLightPosition: { value: new THREE.Vector3(5, 5, 5) },
+    uMouse: { value: new Vector3(0, 0, 0) },
+    uLightPosition: { value: new Vector3(5, 5, 5) },
     uNoiseScale: { value: config?.noiseScale ?? 1.5 },
     uNoiseAmplitude: { value: config?.noiseAmplitude ?? 0.3 },
     uAberrationAmount: { value: config?.aberrationAmount ?? 1.0 },
@@ -72,12 +80,12 @@ export function createShaderUniforms(config?: {
  * Update shader uniforms each frame
  */
 export function updateShaderUniforms(
-  material: THREE.ShaderMaterial,
+  material: ShaderMaterial,
   _deltaTime: number,
   data: {
     time?: number;
-    mouse?: THREE.Vector3;
-    lightPosition?: THREE.Vector3;
+    mouse?: Vector3;
+    lightPosition?: Vector3;
     state?: number;
     shaderQuality?: number;
   }

@@ -6,13 +6,41 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   build: {
+    chunkSizeWarningLimit: 750,
     rollupOptions: {
       output: {
         manualChunks(id) {
           const normalizedId = id.replace(/\\/g, '/');
           if (normalizedId.includes('node_modules')) {
-            if (normalizedId.match(/(@react-three|three|gsap)/)) {
-              return 'chunk-three';
+            if (normalizedId.includes('@react-three/fiber')) {
+              return 'chunk-r3f';
+            }
+            if (normalizedId.includes('@react-three/drei')) {
+              return 'chunk-drei';
+            }
+            if (normalizedId.includes('/three/src/renderers/')) {
+              return 'chunk-three-renderers';
+            }
+            if (normalizedId.includes('/three/src/materials/')) {
+              return 'chunk-three-materials';
+            }
+            if (normalizedId.includes('/three/src/geometries/')) {
+              return 'chunk-three-geometries';
+            }
+            if (normalizedId.includes('/three/src/math/')) {
+              return 'chunk-three-math';
+            }
+            if (normalizedId.includes('/three/src/core/')) {
+              return 'chunk-three-internals';
+            }
+            if (normalizedId.includes('/three/src/objects/')) {
+              return 'chunk-three-objects';
+            }
+            if (normalizedId.includes('/three/')) {
+              return 'chunk-three-core';
+            }
+            if (normalizedId.includes('/gsap/')) {
+              return 'chunk-gsap';
             }
             if (normalizedId.includes('framer-motion')) {
               return 'chunk-motion';

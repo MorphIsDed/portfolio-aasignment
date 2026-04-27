@@ -37,12 +37,12 @@ export default function HeroMetric({ value, label, delay = 0 }: HeroMetricProps)
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
       viewport={{ once: true }}
-      className="theme-surface-muted rounded-2xl px-4 py-4 backdrop-blur-md hover:bg-dark-700/60 transition-colors"
+      className="theme-surface-muted rounded-[1.4rem] border px-4 py-4 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-accent-500/30 hover:bg-white/85 dark:hover:bg-dark-700/60"
     >
-      <p className="font-display text-2xl sm:text-3xl font-bold text-white">
+      <p className="font-display text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
         <AnimatedCounter target={numericValue} />+
       </p>
-      <p className="mt-1 text-xs uppercase tracking-[0.24em] text-gray-300">
+      <p className="mt-1 text-xs uppercase tracking-[0.24em] text-gray-500 dark:text-gray-300">
         {label}
       </p>
     </motion.div>

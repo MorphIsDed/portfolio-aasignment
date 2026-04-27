@@ -4,7 +4,13 @@
 import React, { useEffect, useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Icosahedron } from '@react-three/drei';
-import * as THREE from 'three';
+import {
+  DoubleSide,
+  Mesh,
+  ShaderMaterial,
+  Vector3,
+  type ShaderMaterialParameters,
+} from 'three';
 import { useExperienceStore } from '../../store/experienceStore';
 import { createShaderUniforms, updateShaderUniforms } from '../shaders/index';
 
@@ -13,7 +19,7 @@ interface HeroSphereProps {
   noiseScale?: number;
   noiseAmplitude?: number;
   projectState?: number;
-  onShaderReady?: (material: THREE.ShaderMaterial) => void;
+  onShaderReady?: (material: ShaderMaterial) => void;
 }
 
 /**
@@ -29,11 +35,11 @@ const HeroSphere: React.FC<HeroSphereProps> = ({
   projectState = 0,
   onShaderReady,
 }) => {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const materialRef = useRef<THREE.ShaderMaterial | null>(null);
+  const meshRef = useRef<Mesh>(null);
+  const materialRef = useRef<ShaderMaterial | null>(null);
   const timeRef = useRef(0);
-  const mouseRef = useRef(new THREE.Vector3(0, 0, 0));
-  const lightPositionRef = useRef(new THREE.Vector3(0, 3, 5));
+  const mouseRef = useRef(new Vector3(0, 0, 0));
+  const lightPositionRef = useRef(new Vector3(0, 3, 5));
 
   const {
     shaderQuality,
@@ -179,15 +185,18 @@ const HeroSphere: React.FC<HeroSphereProps> = ({
   );
 
   const shaderMaterial = useMemo(
-    () =>
-      new THREE.ShaderMaterial({
+    () => {
+      const materialConfig: ShaderMaterialParameters = {
         uniforms,
         vertexShader,
         fragmentShader,
         transparent: true,
         wireframe: false,
-        side: THREE.DoubleSide,
-      }),
+        side: DoubleSide,
+      };
+
+      return new ShaderMaterial(materialConfig);
+    },
     [fragmentShader, uniforms, vertexShader]
   );
 

@@ -12,9 +12,17 @@ const heroMetrics = [
   { value: `${timeline.length}+`, label: "Experience entries" },
 ];
 
+const heroSignals = [
+  { label: "Specialty", value: "Frontend systems, motion, Android" },
+  { label: "Strength", value: "UI craft with implementation discipline" },
+  { label: "Approach", value: "Ship polished products, not fragmented demos" },
+];
+
 export default function Hero() {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const resumeHref = personalInfo.resumeUrl || `mailto:${personalInfo.email}?subject=Resume%20Request`;
+  const resumeLabel = personalInfo.resumeUrl ? "View Resume" : "Request Resume";
   const [webglAvailable] = useState(() => {
     if (typeof window === "undefined") return false;
     const canvas = document.createElement("canvas");
@@ -69,13 +77,13 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="theme-section relative flex min-h-screen items-center overflow-hidden pt-24 text-gray-900 dark:text-gray-100 sm:pt-28"
+      className="theme-section relative flex min-h-screen items-center overflow-hidden pt-24 sm:pt-28"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(111,231,221,0.12),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(240,138,75,0.12),transparent_28%)]" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12 px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:items-start">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 pb-16 pt-10 sm:px-6 lg:grid lg:grid-cols-2 lg:items-start lg:gap-12 lg:px-8 lg:pb-24">
         <div className="section-frame lg:h-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -94,7 +102,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.28 }}
-            className="mb-5 text-sm font-medium uppercase tracking-[0.35em] text-gray-300"
+            className="mb-5 text-sm font-medium uppercase tracking-[0.35em] text-gray-500 dark:text-gray-300"
           >
             Interactive Full-Stack Portfolio
           </motion.p>
@@ -103,7 +111,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.36 }}
-            className="mb-5 max-w-3xl font-display text-5xl font-bold tracking-[-0.06em] text-white sm:text-6xl md:text-7xl"
+            className="mb-5 max-w-3xl font-display text-5xl font-bold tracking-[-0.06em] text-gray-950 dark:text-white sm:text-6xl md:text-7xl"
           >
             {personalInfo.name}
           </motion.h1>
@@ -121,7 +129,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.56 }}
-            className="mb-10 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg"
+            className="mb-10 max-w-2xl text-base leading-relaxed text-gray-700 dark:text-gray-300 sm:text-lg"
           >
             {personalInfo.intro}
           </motion.p>
@@ -130,15 +138,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.68 }}
-            className="mb-10 flex flex-col items-start gap-4 sm:flex-row"
+            className="mb-8 flex flex-col items-start gap-4 sm:flex-row"
           >
             <motion.a
-              href="#projects"
+              href={resumeHref}
+              target={personalInfo.resumeUrl ? "_blank" : undefined}
+              rel={personalInfo.resumeUrl ? "noopener noreferrer" : undefined}
               whileHover={{ y: -4, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-500 to-accent-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_20px_50px_rgba(220,110,49,0.28)] transition-all hover:-translate-y-0.5 hover:shadow-[0_28px_70px_rgba(220,110,49,0.34)]"
             >
-              Explore Projects
+              {resumeLabel}
               <svg
                 className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                 fill="none"
@@ -150,13 +160,39 @@ export default function Hero() {
               </svg>
             </motion.a>
             <motion.a
-              href="#contact"
+              href="#projects"
               whileHover={{ y: -4, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/70 px-6 py-3 text-sm font-semibold text-gray-950 transition-all hover:-translate-y-0.5 hover:border-cyan-400 hover:text-cyan-600 dark:border-white/10 dark:bg-white/5 dark:text-gray-100 dark:hover:text-cyan-300"
             >
+              Explore Projects
+            </motion.a>
+            <motion.a
+              href="#contact"
+              whileHover={{ y: -4, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 rounded-full border border-black/8 bg-white/72 px-6 py-3 text-sm font-semibold text-gray-950 transition-all hover:-translate-y-0.5 hover:border-cyan-400 hover:text-cyan-600 dark:border-white/10 dark:bg-dark-800/70 dark:text-gray-100 dark:hover:text-cyan-300"
+            >
               Start a Conversation
             </motion.a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.75 }}
+            className="mb-8 grid gap-3 sm:grid-cols-3"
+          >
+            {heroSignals.map((signal) => (
+              <div key={signal.label} className="editorial-panel px-4 py-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gray-500 dark:text-gray-400">
+                  {signal.label}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-gray-800 dark:text-gray-200">
+                  {signal.value}
+                </p>
+              </div>
+            ))}
           </motion.div>
 
           <motion.div
@@ -175,7 +211,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.94, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="premium-shell relative w-full min-h-[32rem] sm:min-h-[40rem] overflow-hidden rounded-[2.2rem] p-4 sm:p-6 order-first lg:order-last"
+          className="premium-shell order-first relative min-h-[32rem] w-full overflow-hidden rounded-[2.2rem] p-4 sm:min-h-[40rem] sm:p-6 lg:order-last"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.12),transparent_45%)] dark:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.1),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.05),transparent_40%)]" />
           <div className="absolute inset-0">
@@ -193,14 +229,17 @@ export default function Hero() {
               <div className="h-full w-full bg-gradient-to-br from-transparent via-accent-500/5 to-cyan-400/10" />
             )}
           </div>
+          <div className="pointer-events-none absolute left-6 top-6 rounded-full border border-black/6 bg-white/72 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.26em] text-gray-600 dark:border-white/10 dark:bg-white/6 dark:text-gray-300 sm:left-8 sm:top-8">
+            Interactive product showcase
+          </div>
           <div className="pointer-events-none absolute inset-x-0 bottom-6 flex flex-wrap justify-center gap-2 px-4 text-sm">
             {projects.map((project, index) => (
               <span
                 key={project.title}
                 className={`rounded-full border px-3 py-2 transition-all ${
                   index === activeProjectIndex
-                    ? "border-accent-500 bg-accent-500 text-white shadow-[0_10px_30px_rgba(139,92,246,0.24)]"
-                    : "border-white/15 bg-white/10 text-gray-400 dark:border-white/10 dark:bg-dark-700/70 dark:text-gray-500"
+                    ? "border-accent-500 bg-accent-500 text-white shadow-[0_10px_30px_rgba(220,110,49,0.24)]"
+                    : "border-black/8 bg-white/70 text-gray-600 dark:border-white/10 dark:bg-dark-700/70 dark:text-gray-400"
                 }`}
               >
                 {project.title}
@@ -221,7 +260,7 @@ export default function Hero() {
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           className="flex h-10 w-6 justify-center rounded-full border-2 border-gray-300/80 bg-white/50 pt-2 dark:border-dark-500 dark:bg-white/5"
         >
-          <div className="h-2 w-1 rounded-full bg-gray-500 dark:bg-gray-500" />
+          <div className="h-2 w-1 rounded-full bg-gray-500 dark:bg-gray-400" />
         </motion.div>
       </motion.div>
     </section>

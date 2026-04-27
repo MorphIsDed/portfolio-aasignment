@@ -50,10 +50,18 @@ body {
   margin: 0;
   min-height: 100vh;
   background-image:
+    radial-gradient(circle at top, rgba(240, 138, 75, 0.12), transparent 28%),
+    radial-gradient(circle at 85% 15%, rgba(111, 231, 221, 0.14), transparent 22%),
+    linear-gradient(180deg, #f8fafc 0%, #eff6ff 42%, #f4f1ea 100%);
+  background-attachment: fixed;
+  @apply bg-stone-50 text-gray-900;
+}
+
+html.dark body {
+  background-image:
     radial-gradient(circle at top, rgba(240, 138, 75, 0.14), transparent 30%),
     radial-gradient(circle at 85% 15%, rgba(111, 231, 221, 0.16), transparent 24%),
     linear-gradient(180deg, #090b12 0%, #0f1320 48%, #101723 100%);
-  background-attachment: fixed;
   @apply bg-dark-900 text-gray-100;
 }
 
@@ -67,31 +75,31 @@ main {
 
 @layer components {
   .theme-section {
-    @apply bg-transparent text-gray-100 transition-colors duration-300;
+    @apply bg-transparent text-gray-900 transition-colors duration-300 dark:text-gray-100;
   }
 
   .theme-section-alt {
-    @apply bg-dark-800/35 text-gray-100 transition-colors duration-300;
+    @apply bg-white/18 text-gray-900 transition-colors duration-300 dark:bg-dark-800/35 dark:text-gray-100;
   }
 
   .theme-surface {
-    @apply bg-dark-800/80 border border-white/8 text-gray-100 transition-colors duration-300;
+    @apply border border-black/6 bg-white/68 text-gray-900 transition-colors duration-300 dark:border-white/8 dark:bg-dark-800/80 dark:text-gray-100;
     box-shadow:
       0 24px 60px rgba(15, 23, 42, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(22px);
   }
 
   .theme-surface-muted {
-    @apply bg-dark-700/90 text-gray-300 border border-white/6 transition-colors duration-300;
+    @apply border border-black/6 bg-white/72 text-gray-700 transition-colors duration-300 dark:border-white/6 dark:bg-dark-700/90 dark:text-gray-300;
     backdrop-filter: blur(18px);
   }
 
   .premium-shell {
-    @apply relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/4;
+    @apply relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/28 dark:border-white/10 dark:bg-white/4;
     box-shadow:
-      0 28px 70px rgba(2, 6, 23, 0.45),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      0 28px 70px rgba(2, 6, 23, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
     backdrop-filter: blur(24px);
   }
 
@@ -106,10 +114,10 @@ main {
   }
 
   .section-frame {
-    @apply relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/4 px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12;
+    @apply relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/36 px-6 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12 dark:border-white/10 dark:bg-white/4;
     box-shadow:
-      0 28px 70px rgba(2, 6, 23, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      0 28px 70px rgba(2, 6, 23, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
     backdrop-filter: blur(24px);
   }
 
@@ -133,7 +141,7 @@ main {
 
   .metal-label {
     @apply inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.3em];
-    @apply border-white/12 bg-white/6 text-gray-200;
+    @apply border-black/8 bg-white/75 text-gray-700 dark:border-white/12 dark:bg-white/6 dark:text-gray-200;
     backdrop-filter: blur(16px);
   }
 
@@ -143,6 +151,24 @@ main {
       linear-gradient(90deg, rgba(148, 163, 184, 0.14) 1px, transparent 1px);
     background-size: 44px 44px;
     mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 88%);
+  }
+
+  .editorial-panel {
+    @apply relative overflow-hidden rounded-[2rem] border border-black/6 bg-white/64 transition-colors duration-300 dark:border-white/10 dark:bg-dark-900/72;
+    box-shadow:
+      0 24px 60px rgba(15, 23, 42, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    backdrop-filter: blur(22px);
+  }
+
+  .editorial-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(120deg, rgba(255, 255, 255, 0.28), transparent 35%),
+      radial-gradient(circle at top right, rgba(111, 231, 221, 0.14), transparent 30%);
+    pointer-events: none;
   }
 }
 

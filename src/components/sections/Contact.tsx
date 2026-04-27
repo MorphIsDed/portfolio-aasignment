@@ -17,6 +17,13 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState(initialFormState);
   const [status, setStatus] = useState<"idle" | "pending" | "success" | "error">("idle");
+  const resumeHref = personalInfo.resumeUrl || `mailto:${personalInfo.email}?subject=Resume%20Request`;
+
+  const resetFormState = () => {
+    setSubmitted(false);
+    setStatus("idle");
+    setFormData(initialFormState);
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -73,10 +80,16 @@ export default function Contact() {
         <div className="section-frame grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-16">
           <ScrollReveal>
             <div className="space-y-6">
+              <div className="editorial-panel px-5 py-5">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gray-500 dark:text-gray-400">Best fit</p>
+                <p className="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
+                  Frontend engineering, product-minded UI work, and teams that care about both polish and execution.
+                </p>
+              </div>
               <p className="leading-relaxed text-gray-700 dark:text-gray-300">
                 I'm always open to discussing new projects, creative ideas, or
-                opportunities to be part of something great. Feel free to reach
-                out!
+                opportunities to build something thoughtful. Feel free to reach
+                out.
               </p>
 
               <div className="space-y-4">
@@ -129,6 +142,27 @@ export default function Contact() {
                   </span>
                 </motion.a>
               </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="editorial-panel px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-gray-500 dark:text-gray-400">Hiring</p>
+                  <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">Open to internships, freelance, and collaborative product work.</p>
+                </div>
+                <div className="editorial-panel px-4 py-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-gray-500 dark:text-gray-400">Style</p>
+                  <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">Clear communication, thoughtful UX, and clean implementation.</p>
+                </div>
+              </div>
+
+              <motion.a
+                href={resumeHref}
+                target={personalInfo.resumeUrl ? "_blank" : undefined}
+                rel={personalInfo.resumeUrl ? "noopener noreferrer" : undefined}
+                whileHover={{ x: 6 }}
+                className="inline-flex items-center gap-3 rounded-full border border-black/8 bg-white/72 px-5 py-3 text-sm font-semibold text-gray-900 transition-colors hover:text-accent-600 dark:border-white/10 dark:bg-white/6 dark:text-gray-100 dark:hover:text-accent-400"
+              >
+                {personalInfo.resumeUrl ? "View Resume" : "Request Resume by Email"}
+              </motion.a>
             </div>
           </ScrollReveal>
 
@@ -147,12 +181,19 @@ export default function Contact() {
                   <p className="text-sm text-gray-600 dark:text-gray-400">
                     Thanks for reaching out. I'll get back to you soon.
                   </p>
+                  <button
+                    type="button"
+                    onClick={resetFormState}
+                    className="inline-flex rounded-full border border-black/10 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:text-accent-600 dark:border-white/10 dark:text-gray-300 dark:hover:text-accent-400"
+                  >
+                    Send another message
+                  </button>
                 </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5 rounded-[1.75rem] border border-white/50 bg-white/45 p-5 backdrop-blur-xl dark:border-white/10 dark:bg-white/4 sm:p-6">
                 {!FORMSPREE_ENDPOINT && (
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
                     Formspree is not configured, so this form will open your email client as a fallback.
                   </p>
                 )}
@@ -169,7 +210,7 @@ export default function Contact() {
                   aria-hidden="true"
                 />
                 <div>
-                  <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-gray-300">
+                  <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Name
                   </label>
                   <input
@@ -182,12 +223,12 @@ export default function Contact() {
                     onChange={(event) =>
                       setFormData((current) => ({ ...current, name: event.target.value }))
                     }
-                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-200 outline-none placeholder:text-gray-500 focus:border-accent-500 focus:ring-1 focus:ring-accent-500"
+                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-900 outline-none placeholder:text-gray-500 focus:border-accent-500 focus:ring-1 focus:ring-accent-500 dark:text-gray-200"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-300">
+                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Email
                   </label>
                   <input
@@ -198,12 +239,12 @@ export default function Contact() {
                     onChange={(event) =>
                       setFormData((current) => ({ ...current, email: event.target.value }))
                     }
-                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-200 outline-none placeholder:text-gray-500 focus:border-accent-500 focus:ring-1 focus:ring-accent-500"
+                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-900 outline-none placeholder:text-gray-500 focus:border-accent-500 focus:ring-1 focus:ring-accent-500 dark:text-gray-200"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-gray-300">
+                  <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Message
                   </label>
                   <textarea
@@ -216,7 +257,7 @@ export default function Contact() {
                     onChange={(event) =>
                       setFormData((current) => ({ ...current, message: event.target.value }))
                     }
-                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-200 outline-none placeholder:text-gray-500 focus:border-accent-500 focus:ring-1 focus:ring-accent-500"
+                    className="theme-surface w-full rounded-xl px-4 py-3 text-sm text-gray-900 outline-none placeholder:text-gray-500 focus:border-accent-500 focus:ring-1 focus:ring-accent-500 dark:text-gray-200"
                     placeholder="What's on your mind?"
                   />
                 </div>
