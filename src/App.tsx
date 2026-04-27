@@ -1,4 +1,5 @@
 import { motion, useScroll, useSpring } from "framer-motion";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/layout/Navbar";
 import CustomCursor from "./components/layout/CustomCursor";
 import Footer from "./components/layout/Footer";
@@ -43,6 +44,7 @@ export default function App() {
       <Footer />
       <StickyContactBar />
       <BackToTop />
+      <Analytics />
     </div>
   );
 }

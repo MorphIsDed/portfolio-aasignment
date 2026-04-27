@@ -5,7 +5,7 @@
 
 export const personalInfo = {
   name: "Abhinay Kumar Sahu",
-  role: "Full-Stack & Android Developer",
+  role: "Student at Christ University, Pune Lavasa Campus",
   intro:
     "BCA undergraduate focused on building responsive web experiences and offline-first mobile products. I work across React, TypeScript, Kotlin, and product-minded UI systems, with an emphasis on clean architecture, smooth interactions, and user-focused execution.",
   email: "sahuabhinay317@gmail.com",
